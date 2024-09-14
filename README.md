@@ -117,12 +117,20 @@ Edit VM settings with virt-manager or virsh:
 
 sudo virsh edit myvm
 Adjust settings for CPU, memory, and other parameters as needed.
+<img width="353" alt="das" src="https://github.com/user-attachments/assets/e6570ee1-5bc3-4a7f-b62a-9dabf095cb99">
+
 
 # 7. Attach Storage Volumes
 Create and attach additional storage volumes:
 
 sudo virsh vol-create-as default myvolume.qcow2 20G --format qcow2
+
+<img width="360" alt="ds" src="https://github.com/user-attachments/assets/b945560e-e9e8-4bb9-a50a-3b4203f48d67">
+
 sudo virsh attach-disk myvm /var/lib/libvirt/images/myvolume.qcow2 vdb --targetbus virtio
+
+<img width="365" alt="csaa" src="https://github.com/user-attachments/assets/c832bff1-8666-47df-a155-6e6320ca35fe">
+
 
 # 8. Enable Additional Features
 Live migration:
@@ -130,13 +138,26 @@ Live migration:
 sudo virsh migrate --live myvm qemu+ssh://destination-server/system
 Create a snapshot:
 
+<img width="362" alt="651" src="https://github.com/user-attachments/assets/ad618841-f1be-4bfa-a2a2-f8008049d181">
+
 sudo virsh snapshot-create-as myvm snapshot1 "Snapshot description"
+
+<img width="364" alt="ewq" src="https://github.com/user-attachments/assets/c016ebd0-b9d5-4818-9637-82099d54f9fb">
+
+
 CPU pinning and memory ballooning can be configured in the VM XML configuration:
 
 sudo virsh edit myvm
 
+<img width="298" alt="qweq" src="https://github.com/user-attachments/assets/8c8c291e-d773-42b2-bf4b-5b3a60997edf">
+
+
 # 9. Test KVM Virtualization Setup
 Deploy and test VMs: Deploy VMs, run workloads, and monitor their performance using tools like top, htop, or virt-top.
+
+
+<img width="362" alt="41" src="https://github.com/user-attachments/assets/c4edc484-dfc4-4a2b-986d-c49af025e5a8">
+
 10. Implement Security Best Practices
 Configure SELinux policies: Ensure SELinux is enforcing and configured for virtualization:
 
@@ -144,7 +165,44 @@ sudo setenforce 1
 Review and configure firewall rules:
 
 sudo firewall-cmd --list-all
+
+<img width="359" alt="532" src="https://github.com/user-attachments/assets/7eeaebae-bd99-4a73-9159-687bc18f18d6">
+
+
 Ensure VM isolation and security best practices:
 
 Isolate VMs from each other where necessary.
 Use secure communication channels for management tasks.
+
+# KVM Virtualization Summary
+Installation and Configuration:
+
+Install KVM and related packages on CentOS, including virtualization tools and libraries.
+Start and enable the libvirtd service to manage virtual machines.
+Virtual Machine Creation and Configuration:
+
+Use tools like virt-install or virt-manager to create virtual machines.
+Configure VM settings such as CPU allocation, memory size, disk storage, and networking.
+Network Configuration:
+
+Set up a bridge interface to allow VMs to communicate with external networks.
+Adjust firewall rules to ensure proper network access for virtual machines.
+Storage Management:
+
+Define and manage storage pools for VM disk images.
+Allocate and manage storage volumes within the pools to ensure adequate capacity and performance.
+Advanced Features:
+
+Enable and configure features such as live migration to move VMs between hosts without downtime.
+Set up snapshot management to capture the state of VMs for backup or testing.
+Implement resource allocation techniques like CPU pinning and memory ballooning to optimize performance.
+Security Measures:
+
+Apply SELinux policies to enforce security contexts and protect the virtual environment.
+Configure firewall rules to restrict access to only necessary services.
+Ensure VM isolation to prevent unauthorized access and maintain security within the virtualized environment.
+This summary covers the key aspects of setting up and managing KVM virtualization, including installation, VM configuration, network and storage management, advanced features, and security practices.
+
+
+
+
