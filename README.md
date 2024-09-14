@@ -109,8 +109,13 @@ sudo virt-install \
   --location 'http://mirror.centos.org/centos/7/os/x86_64/' \
   --extra-args 'console=ttyS0,115200n8 serial'
 
+<img width="365" alt="lok" src="https://github.com/user-attachments/assets/f9b3370a-5940-46b3-8a95-75dfeabb9a4f">
+
+
   <img width="402" alt="42" src="https://github.com/user-attachments/assets/f76e2672-74cd-4a50-85ab-e283e5997c69">
 
+
+<img width="292" alt="sca" src="https://github.com/user-attachments/assets/42ceeca8-a9c4-45db-89c3-35aae7be8e70">
 
 # 6. Customize Virtual Machine Settings
 Edit VM settings with virt-manager or virsh:
