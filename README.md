@@ -10,11 +10,38 @@ Update your system:
 
 sudo yum update -y
 [root@dlp ~]# dnf -y install qemu-kvm libvirt virt-install
+
+sudo dnf install libvirt virt-manager
+
+<img width="428" alt="virt" src="https://github.com/user-attachments/assets/07907aa7-12fb-4ec1-af5a-a357cbf12317">
+
+
+<img width="426" alt="dsaas" src="https://github.com/user-attachments/assets/6f8cfc3e-873f-4d7f-aebb-ea4d78930603">
+
+# Granting regular (non-root) user access to KVM
+The following allows a non-root user access to manage KVM guests
+
+For systems with a libvirt group
+This works on at least Ubuntu 19.10, and CentOS 8. Not been tested on other systems.
+
+<img width="409" alt="y6" src="https://github.com/user-attachments/assets/8440ab10-4dee-49e6-bc6b-51f7140433c9">
+
+
+sudo usermod -aG libvirt $USER
+
+
+<img width="419" alt="3213" src="https://github.com/user-attachments/assets/3e7cbab4-91f3-45e6-8516-919c959fbb7f">
+
+
 # confirm modules are loaded
 [root@dlp ~]# lsmod | grep kvm
 kvm_intel             348160  0
 kvm                  1056768  1 kvm_intel
 irqbypass              16384  1 kvm
+
+<img width="468" alt="virt" src="https://github.com/user-attachments/assets/aeb0497b-a1ab-45ef-88a2-340ac4744025">
+
+
 
 [root@dlp ~]# systemctl enable --now libvirtd
 
@@ -108,6 +135,12 @@ sudo virt-install \
   --console pty,target_type=serial \
   --location 'http://mirror.centos.org/centos/7/os/x86_64/' \
   --extra-args 'console=ttyS0,115200n8 serial'
+<img width="477" alt="downl" src="https://github.com/user-attachments/assets/c1002113-6c73-4905-b019-03c8747a5e3a">
+
+
+<img width="447" alt="dw1" src="https://github.com/user-attachments/assets/c686b826-1fb2-4e24-8ed0-7be7451d98f8">
+
+
 
 <img width="365" alt="lok" src="https://github.com/user-attachments/assets/f9b3370a-5940-46b3-8a95-75dfeabb9a4f">
 
